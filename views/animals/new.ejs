@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+<body>
+    <h1>New</h1>
+    <form action='/animals' method='POST'>
+        <label for='name'>Name</label>
+        <input type='text' name='name'>
+        <br />
+        <label for='fluff'>Fluffiness</label>
+        <br />
+        <label for='fluff'>1 <----> 5</label>
+        <div>
+            <input type="radio" name="fluff" value="1">
+            <input type="radio" name="fluff" value="2">
+            <input type="radio" name="fluff" value="3">
+            <input type="radio" name="fluff" value="4">
+            <input type="radio" name="fluff" value="5">
+        </div>
+        <label for='size'>Size</label>
+        <br />
+        <label for='size'>1 <----> 5</label>
+        <div>
+            <input type="radio" name="size" value="1">
+            <input type="radio" name="size" value="2">
+            <input type="radio" name="size" value="3">
+            <input type="radio" name="size" value="4">
+            <input type="radio" name="size4" value="5">
+        </div>
+        <br />
+        <label for='img'>Image SRC</label>
+        <input type='text' name='img'>
+        <br />
+        <label for='type'>Animal Type/Breed</label>
+        <input type='text' name='type'>
+        <br />
+        <label for='credit'>Credit</label>
+        <input type='text' name='credit'>
+        <br />
+        <input type='submit'>
+    </form>
+
+</body>
+</html>
