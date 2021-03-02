@@ -1,1 +1,22 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide img{
+    height: 50%;
+    width: 50%;
+}
+
