@@ -14,6 +14,7 @@ const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ `cute-an
 // MIDDLEWARE
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 // DATABASE
