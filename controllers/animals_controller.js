@@ -51,7 +51,10 @@ animals.get('/new', (req, res) => {
 
 //Create
 animals.post('/', (req, res) => {
+    req.body.fluff = parseInt(req.body.fluff);
+    req.body.size = parseInt(req.body.size);
     Animal.create(req.body, (err, newItem) => {
+        console.log(req.body + "IS CREATED");
         err ? console.log(err) : console.log(newItem);
     });
     res.redirect('/animals');
