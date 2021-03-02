@@ -2,6 +2,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 
 // Configuration
@@ -10,6 +11,7 @@ const app = express();
 const db = mongoose.connection;
 const PORT = process.env.PORT || 3000;
 const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + `cute-animals`;
+const mySecret = process.env.SECRET || 'superSecretCode';
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
@@ -18,7 +20,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
     session({
-        secret = process.env.SECRET || 'superSecretCode',
+        secret: mySecret,
         resave: false,
         saveUninitialized: false
     })
