@@ -9,7 +9,7 @@ require('dotenv').config();
 const app = express();
 const db = mongoose.connection;
 const PORT = process.env.PORT || 3000;
-const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ `cute_animals`;
+const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ `cute-animals`;
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
@@ -37,6 +37,9 @@ const animalRouter = require('./controllers/animals_controller');
 
 app.use('/animals', animalRouter);
 
+app.get('/', (req, res) => {
+    res.redirect('/animals');
+})
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
 });
