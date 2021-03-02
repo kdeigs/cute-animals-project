@@ -9,13 +9,20 @@ require('dotenv').config();
 const app = express();
 const db = mongoose.connection;
 const PORT = process.env.PORT || 3000;
-const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ `cute-animals`;
+const DBNAME = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + `cute-animals`;
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+    session({
+        secret = process.env.SECRET || 'superSecretCode',
+        resave: false,
+        saveUninitialized: false
+    })
+);
 
 // DATABASE
 mongoose.connect(
@@ -35,7 +42,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // Controllers
 const animalRouter = require('./controllers/animals_controller');
-const userRouter = require('./controllers/users_controllers')
+const userRouter = require('./controllers/users_controller')
 
 app.use('/animals', animalRouter);
 app.use('/users', userRouter);

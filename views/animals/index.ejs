@@ -5,50 +5,53 @@
     <%- include('../partials/header.ejs') %>
     <main>
         <h1 class='title is-1'>Featured Animals</h1>
-        <section class='section'>
-            <div class='container'>
-                <div id='my-carousel' class='carousel'>
-                    <div class='item-1'>
-                        <a href='/animals/<%= animals[animals.length-1].id %>'>
-                            <div class='slide'>
-                                <h3 class='title is-3'><%= animals[animals.length-1].name%></h3>
-                                <img src='<%= animals[animals.length-1].img %>'>
-                            </div>
-                        </a>
-                        
-                    </div>
-                    <div class='item-2'>
-                        <a href='/animals/<%= animals[animals.length-2].id %>'>
-                            <div class='slide'>
-                                <h3 class='title is-3'><%= animals[animals.length-2].name%></h3>
-                                <img src='<%= animals[animals.length-2].img %>'>
-                            </div>
-                        </a>
-                    </div>
-                    <div class='item-3'>
-                        <a href='/animals/<%= animals[animals.length-3].id %>'>
-                            <div class='slide'>
-                                <h3 class='title is-3'><%= animals[animals.length-3].name%></h3>
-                                <img src='<%= animals[animals.length-3].img %>'>
-                            </div>
-                        </a>
-                        
+        <% if(animals != undefined && animals.length >= 3){ %>
+            <section class='section'>
+                <div class='container'>
+                    <div id='my-carousel' class='carousel'>
+                        <div class='item-1'>
+                            <a href='/animals/<%= animals[animals.length-1].id %>'>
+                                <div class='slide'>
+                                    <h3 class='title is-3'><%= animals[animals.length-1].name%></h3>
+                                    <img src='<%= animals[animals.length-1].img %>'>
+                                </div>
+                            </a>
+                            
+                        </div>
+                        <div class='item-2'>
+                            <a href='/animals/<%= animals[animals.length-2].id %>'>
+                                <div class='slide'>
+                                    <h3 class='title is-3'><%= animals[animals.length-2].name%></h3>
+                                    <img src='<%= animals[animals.length-2].img %>'>
+                                </div>
+                            </a>
+                        </div>
+                        <div class='item-3'>
+                            <a href='/animals/<%= animals[animals.length-3].id %>'>
+                                <div class='slide'>
+                                    <h3 class='title is-3'><%= animals[animals.length-3].name%></h3>
+                                    <img src='<%= animals[animals.length-3].img %>'>
+                                </div>
+                            </a>
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+            <!--Code from Bulma Extensions Documentation-->
+            <script>
+                bulmaCarousel.attach('#my-carousel', {
+                    slidesToScroll: 1,
+                    slidesToShow: 1,
+                    infinite: true
+                });
+            </script>
+        <% } %>
     </main>
     
 
-    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
-    <!--Code from Bulma Extensions Documentation-->
-	<script>
-		bulmaCarousel.attach('#my-carousel', {
-			slidesToScroll: 1,
-            slidesToShow: 1,
-            infinite: true
-		});
-    </script>
+    
         
 </body>
 </html>
