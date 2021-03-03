@@ -19,14 +19,20 @@
                 </a>
             </div>
             <div class='navbar-end'>
-                <div class='buttons'>
-                    <a class='button is-primary' href='/users/signup'>
-                        Sign Up
-                    </a>
-                    <a class='button is-light' herf='/users/login'>
-                        Log In
-                    </a>
-                </div>
+                <% if (!currentUser) {%>
+                    <div class='buttons'>
+                        <a class='button is-primary' href='/users/signup'>
+                            Sign Up
+                        </a>
+                        <a class='button is-light' href='/users/login'>
+                            Log In
+                        </a>
+                    </div>
+                <% }else{ %>
+                    <div class='buttons'>
+                        <p class='navbar-item'>Welcome <%= currentUser.username %></p>
+                        <a class='button is-light' href='/'>Log Out</a>
+                    </div>
             </div>
         </div>
     </nav>
