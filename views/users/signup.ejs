@@ -10,16 +10,20 @@
                 <form action='/users' method='POST'>
                     <div class='field'>
                         <label for="username" class='label'>Username</label>
-                        <input type="text" name='name' class='input is-small'>  
+                        <input type="text" name='username' class='input is-small'>  
                     </div>
                     <div class='field'>
                         <label for="password" class='label'>Password</label>
                         <input type="text" name='password' class='input is-small'>  
                     </div>
         
-                    <input type='submit' name='' value='Submit' class='button is-primary'>
+                    <input type='submit' value='Submit' class='button is-primary'>
                 </form>
+                <% if(error) {%>
+                    <p><%= error %></p>
+                <% } %>
             </div>
+            
         </div>
     </div>
 </body>

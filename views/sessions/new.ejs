@@ -5,16 +5,11 @@
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head.ejs') %>
-<body>
-    <%- include('../partials/header.ejs') %>
     <div class='container is-fluid'>
         <h1 class='title is-1'>Log In</h1>
         <div class='columns'>
             <div class='column is-three-fifths is-offset-one-fifth'>
-                <form action='/users' method='POST'>
+                <form action='/sessions' method='POST'>
                     <div class='field'>
                         <label for="username" class='label'>Username</label>
                         <input type="text" name='name' class='input is-small'>  

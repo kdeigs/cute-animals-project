@@ -7,7 +7,8 @@ const User = require('../models/users.js');
 users.get('/signup', (req, res) => {
     res.render('users/signup.ejs', {
         pageTitle: 'Sign Up',
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        error: undefined
     });
 });
 
@@ -16,8 +17,24 @@ users.get('/signup', (req, res) => {
 users.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {
-        err ? console.log(err) : console.log(createdUser);
-        res.redirect('/animals');
+        if(err){
+            console.log(err.errors.username.properties)
+            let newErr;
+            if(err.errors.username.properties.type == 'required'){
+                newErr = 'Please Input a Username';
+            }else{
+                newErr = 'OOPS';
+            }
+            res.render('users/signup.ejs', {
+                pageTitle: 'Sign Up',
+                currentUser: req.session.currentUser,
+                error: newErr
+            });
+        }else{
+            console.log(createdUser);
+            res.redirect('/sessions/new');
+        }
+        
     });
 });
 
