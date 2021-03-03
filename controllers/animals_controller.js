@@ -68,7 +68,6 @@ animals.post('/', isAuthenticated, (req, res) => {
     req.body.size = parseInt(req.body.size);
     req.body.username = req.session.currentUser;
     Animal.create(req.body, (err, newItem) => {
-        console.log(req.body + "IS CREATED");
         err ? console.log(err) : console.log(newItem);
     });
     res.redirect('/animals');
