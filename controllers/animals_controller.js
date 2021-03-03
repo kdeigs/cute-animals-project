@@ -26,6 +26,7 @@ animals.get('/seed', (req, res) => {
     Animal.create([
         {
             name: 'Bob',
+            username: 'kole',
             fluff: 4,
             size: 5,
             img: 'https://i1.wp.com/www.dailycal.org/assets/uploads/2019/10/animals_wikimedia_cc-900x580.jpg',
@@ -34,6 +35,7 @@ animals.get('/seed', (req, res) => {
         },
         {
             name: 'Bruh',
+            username: 'kole',
             fluff: 4,
             size: 5,
             img: 'https://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg',
@@ -41,7 +43,8 @@ animals.get('/seed', (req, res) => {
             credit: 'test'
         },
         {
-            name: 'Another One',
+            name: 'Geoffery',
+            username: 'kole',
             fluff: 4,
             size: 5,
             img: 'https://i.pinimg.com/originals/a6/94/c2/a694c2f6dac7497974c391c7ecb0e337.jpg',
@@ -52,7 +55,7 @@ animals.get('/seed', (req, res) => {
     res.redirect('/animals');
 });
 //New
-animals.get('/new', (req, res) => {
+animals.get('/new', isAuthenticated, (req, res) => {
     res.render('animals/new.ejs', {
         pageTitle: 'New',
         currentUser: req.session.currentUser
@@ -60,9 +63,10 @@ animals.get('/new', (req, res) => {
 });
 
 //Create
-animals.post('/', (req, res) => {
+animals.post('/', isAuthenticated, (req, res) => {
     req.body.fluff = parseInt(req.body.fluff);
     req.body.size = parseInt(req.body.size);
+    req.body.username = req.session.currentUser;
     Animal.create(req.body, (err, newItem) => {
         console.log(req.body + "IS CREATED");
         err ? console.log(err) : console.log(newItem);
@@ -70,8 +74,21 @@ animals.post('/', (req, res) => {
     res.redirect('/animals');
 });
 
+//EditAll
+
+animals.get('/editAll', isAuthenticated, (req, res) => {
+    Animal.find({username: req.session.currentUser}, (err, userAnimals) => {
+        err ? console.log(err) : console.log(userAnimals);
+        res.render('animals/editAll.ejs', {
+            pageTitle: 'Edit All',
+            currentUser: req.session.currentUser,
+            animals: userAnimals
+        });
+    });
+});
+
 //Edit
-animals.get('/:id/edit', (req, res) => {
+animals.get('/:id/edit', isAuthenticated, (req, res) => {
     Animal.findById(req.params.id, (err, item) => {
         err ? console.log(err) : console.log(item);
         res.render('animals/edit.ejs', {
@@ -83,7 +100,7 @@ animals.get('/:id/edit', (req, res) => {
 })
 
 //Update
-animals.put('/:id', (req, res) => {
+animals.put('/:id', isAuthenticated, (req, res) => {
     Animal.findByIdAndUpdate(req.params.id, req.body, (err, updated) => {
         err ? console.log(err) : console.log(updated);
         res.redirect(`/${req.params.id}`);
@@ -91,7 +108,7 @@ animals.put('/:id', (req, res) => {
 });
 
 //Delete
-animals.delete('/:id', (req, res) => {
+animals.delete('/:id', isAuthenticated, (req, res) => {
     Animal.findByIdAndDelete(req.params.id, (err, deleted) => {
         err ? console.log(err) : console.log(deleted);
         res.redirect('/animals');

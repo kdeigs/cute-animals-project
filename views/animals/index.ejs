@@ -14,6 +14,7 @@
                                 <div class='slide'>
                                     <h3 class='title is-3'><%= animals[animals.length-1].name%></h3>
                                     <img src='<%= animals[animals.length-1].img %>'>
+                                    <p>Uploaded by: <%= animals[animals.length-1].username %></p>
                                 </div>
                             </a>
                             
@@ -23,6 +24,7 @@
                                 <div class='slide'>
                                     <h3 class='title is-3'><%= animals[animals.length-2].name%></h3>
                                     <img src='<%= animals[animals.length-2].img %>'>
+                                    <p>Uploaded by: <%= animals[animals.length-2].username %></p>
                                 </div>
                             </a>
                         </div>
@@ -31,6 +33,7 @@
                                 <div class='slide'>
                                     <h3 class='title is-3'><%= animals[animals.length-3].name%></h3>
                                     <img src='<%= animals[animals.length-3].img %>'>
+                                    <p>Uploaded by: <%= animals[animals.length-3].username %></p>
                                 </div>
                             </a>
                             
@@ -48,10 +51,18 @@
                 });
             </script>
         <% } %>
-    </main>
-    
 
-    
-        
+        <h1 class='title is-2'>All Animals</h1>
+        <div class='columns is-multiline is-mobile is vcentered'>
+            <% for(let i = 0; i < animals.length; i ++){ %>
+                <a href='/animals/<%= animals[i].id %>' ></a>
+                    <div class='column is-one-quarter showAll'>
+                        <h3 class='title is-3'><%= animals[i].name %></h3>
+                        <img src='<%= animals[i].img %>' class = 'image'>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </main>   
 </body>
 </html>

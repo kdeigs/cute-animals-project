@@ -24,3 +24,10 @@ h1 {
     width: 50%;
 }
 
+.showAll {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
