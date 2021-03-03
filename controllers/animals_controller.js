@@ -8,7 +8,8 @@ animals.get('/', (req, res) => {
         err ? console.log(err) : console.log(items);
         res.render('animals/index.ejs', {
             animals: items,
-            pageTitle: 'Index'
+            pageTitle: 'Index',
+            currentUser: req.session.currentUser
         });
     });
 });
@@ -45,7 +46,8 @@ animals.get('/seed', (req, res) => {
 //New
 animals.get('/new', (req, res) => {
     res.render('animals/new.ejs', {
-        pageTitle: 'New'
+        pageTitle: 'New',
+        currentUser: req.session.currentUser
     });
 });
 
@@ -66,7 +68,8 @@ animals.get('/:id/edit', (req, res) => {
         err ? console.log(err) : console.log(item);
         res.render('animals/edit.ejs', {
             animal: item,
-            pageTitle: 'Edit'
+            pageTitle: 'Edit',
+            currentUser: req.session.currentUser
         });
     });
 })
@@ -101,7 +104,8 @@ animals.get('/:id', (req, res) => {
         err ? console.log(err) : console.log(item);
         res.render('animals/show.ejs', {
             animal: item,
-            pageTitle: 'Show'
+            pageTitle: 'Show',
+            currentUser: req.session.currentUser
         });
     });
 });

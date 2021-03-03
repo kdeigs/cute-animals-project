@@ -45,9 +45,11 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // Controllers
 const animalRouter = require('./controllers/animals_controller');
 const userRouter = require('./controllers/users_controller')
+const sessionRouter = require('./controllers/sessions_controller');
 
 app.use('/animals', animalRouter);
 app.use('/users', userRouter);
+app.use('/sessions', sessionRouter);
 
 app.get('/', (req, res) => {
     res.redirect('/animals');

@@ -19,7 +19,12 @@
                 </a>
             </div>
             <div class='navbar-end'>
-                <% if (!currentUser) {%>
+                <% if (currentUser) {%>
+                    <div class='buttons'>
+                        <p class='navbar-item'>Welcome <%= currentUser.username %></p>
+                        <a class='button is-light' href='/'>Log Out</a>
+                    </div>
+                <% }else{ %>
                     <div class='buttons'>
                         <a class='button is-primary' href='/users/signup'>
                             Sign Up
@@ -28,11 +33,7 @@
                             Log In
                         </a>
                     </div>
-                <% }else{ %>
-                    <div class='buttons'>
-                        <p class='navbar-item'>Welcome <%= currentUser.username %></p>
-                        <a class='button is-light' href='/'>Log Out</a>
-                    </div>
+                <% } %>
             </div>
         </div>
     </nav>

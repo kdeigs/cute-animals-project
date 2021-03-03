@@ -6,7 +6,8 @@ const User = require('../models/users.js');
 //Signup
 users.get('/signup', (req, res) => {
     res.render('users/signup.ejs', {
-        pageTitle: 'Sign Up'
+        pageTitle: 'Sign Up',
+        currentUser: req.session.currentUser
     });
 });
 
