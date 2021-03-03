@@ -22,7 +22,9 @@
                 <% if (currentUser) {%>
                     <div class='buttons'>
                         <p class='navbar-item'>Welcome <%= currentUser.username %></p>
-                        <a class='button is-light' href='/'>Log Out</a>
+                        <form action='/sessions?_method=DELETE' method='POST'>
+                            <input type='submit' class='button is-danger' value='Log Out'>
+                        </form>
                     </div>
                 <% }else{ %>
                     <div class='buttons'>

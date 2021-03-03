@@ -2,6 +2,14 @@ const express = require('express');
 const animals = express.Router();
 const Animal = require('../models/animals.js');
 
+const isAuthenticated = (req, res, next) => {
+    if(req.session.currentUser) {
+        return next();
+    } else {
+        res.redirect('/sessions/new');
+    }
+}
+
 //Index
 animals.get('/', (req, res) => {
     Animal.find({}, (err, items) => {

@@ -18,12 +18,16 @@ users.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {
         if(err){
-            console.log(err.errors.username.properties)
             let newErr;
-            if(err.errors.username.properties.type == 'required'){
-                newErr = 'Please Input a Username';
+            if(err.errors != undefined){
+                newErr = 'Sorry, Something Went Wrong';
+                if(err.errors.username.properties.type === 'required'){
+                    newErr = 'Please Input a Username';
+                }
+            }else if(err.code === 11000){
+                newErr = 'Error, this user already exists';
             }else{
-                newErr = 'OOPS';
+                newErr = 'Sorry, Something Went Wrong';
             }
             res.render('users/signup.ejs', {
                 pageTitle: 'Sign Up',

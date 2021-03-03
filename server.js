@@ -42,6 +42,7 @@ mongoose.connect(
 db.on('error', err => console.log(err.message + ' is mongod not running?'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+
 // Controllers
 const animalRouter = require('./controllers/animals_controller');
 const userRouter = require('./controllers/users_controller')
