@@ -76,7 +76,8 @@ animals.post('/', isAuthenticated, (req, res) => {
 //EditAll
 
 animals.get('/editAll', isAuthenticated, (req, res) => {
-    Animal.find({username: req.session.currentUser}, (err, userAnimals) => {
+    Animal.find({username: req.session.currentUser.username}, (err, userAnimals) => {
+        console.log(userAnimals);
         err ? console.log(err) : console.log(userAnimals);
         res.render('animals/editAll.ejs', {
             pageTitle: 'Edit All',
