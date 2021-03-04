@@ -30,17 +30,17 @@ animals.get('/seed', (req, res) => {
             fluff: 4,
             size: 5,
             img: 'https://i1.wp.com/www.dailycal.org/assets/uploads/2019/10/animals_wikimedia_cc-900x580.jpg',
-            type: 'dog',
-            credit: 'test'
+            type: 'Seal',
+            credit: 'https://i1.wp.com/www.dailycal.org/assets/uploads/2019/10/animals_wikimedia_cc-900x580.jpg'
         },
         {
-            name: 'Bruh',
+            name: 'Melman',
             username: 'kole',
             fluff: 4,
             size: 5,
             img: 'https://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg',
-            type: 'dog',
-            credit: 'test'
+            type: 'Giraffe',
+            credit: 'https://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg'
         },
         {
             name: 'Geoffery',
@@ -48,8 +48,17 @@ animals.get('/seed', (req, res) => {
             fluff: 4,
             size: 5,
             img: 'https://i.pinimg.com/originals/a6/94/c2/a694c2f6dac7497974c391c7ecb0e337.jpg',
+            type: 'Deer',
+            credit: 'https://i.pinimg.com/originals/a6/94/c2/a694c2f6dac7497974c391c7ecb0e337.jpg'
+        },
+        {
+            name: 'Buff',
+            username: 'kole',
+            fluff: 4,
+            size: 5,
+            img: 'https://pbs.twimg.com/profile_images/704447240216051712/mTel0Q49_400x400.jpg',
             type: 'dog',
-            credit: 'test'
+            credit: 'https://pbs.twimg.com/profile_images/704447240216051712/mTel0Q49_400x400.jpg'
         }
     ]);
     res.redirect('/animals');
@@ -66,7 +75,7 @@ animals.get('/new', isAuthenticated, (req, res) => {
 animals.post('/', isAuthenticated, (req, res) => {
     req.body.fluff = parseInt(req.body.fluff);
     req.body.size = parseInt(req.body.size);
-    req.body.username = req.session.currentUser;
+    req.body.username = req.session.currentUser.username;
     Animal.create(req.body, (err, newItem) => {
         err ? console.log(err) : console.log(newItem);
     });

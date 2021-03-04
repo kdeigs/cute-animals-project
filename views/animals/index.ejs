@@ -55,12 +55,12 @@
         <h1 class='title is-2'>All Animals</h1>
         <div class='columns is-multiline is-mobile is vcentered'>
             <% for(let i = 0; i < animals.length; i ++){ %>
-                <a href='/animals/<%= animals[i].id %>' ></a>
-                    <div class='column is-one-quarter showAll'>
+                    <div class='column is-one-fifth showAll'>
                         <h3 class='title is-3'><%= animals[i].name %></h3>
-                        <img src='<%= animals[i].img %>' class = 'image'>
+                        <a href='/animals/<%= animals[i].id %>' >
+                            <img src='<%= animals[i].img %>' class = 'image is-128x128'>
+                        </a>
                     </div>
-                </a>
             <% } %>
         </div>
     </main>   
