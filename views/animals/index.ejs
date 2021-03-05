@@ -51,11 +51,16 @@
                 });
             </script>
         <% } %>
-
-        <h1 class='title is-2'>All Animals</h1>
+        
+        
+        
         <div class='columns is-multiline is-mobile is vcentered'>
+            <div class='column is-one-fifth is-offset-two-fifths'>
+                <a href='/animals/randomAnimal' class='button is-primary center'>Random Animal</a>
+                <h1 class='title is-2'>All Animals</h1>
+            </div>
             <% for(let i = 0; i < animals.length; i ++){ %>
-                    <div class='column is-one-fifth showAll'>
+                    <div class='column is-half showAll'>
                         <h3 class='title is-3'><%= animals[i].name %></h3>
                         <a href='/animals/<%= animals[i].id %>' >
                             <img src='<%= animals[i].img %>' class = 'image is-128x128'>

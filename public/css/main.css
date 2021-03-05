@@ -31,3 +31,7 @@ h1 {
     align-items: center;
 }
 
+.center {
+    text-align: center;
+    float: center;
+}
