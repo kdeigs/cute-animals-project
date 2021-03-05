@@ -24,3 +24,5 @@ Live Site: https://mighty-river-22200.herokuapp.com/animals
 - Create a Neural Network to identify what animal is being uploaded and reccommend that type while creating an animal
 - Add a comment feature onto animals to allow people to share their thoughts
 - Add user profile pictures for comments
+- Add user preferences for fluff and size of animals
+- Auto reccommend what a user would enjoy by fluff and size and seeing how their day is going
