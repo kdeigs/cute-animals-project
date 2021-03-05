@@ -18,3 +18,8 @@ Live Site: https://mighty-river-22200.herokuapp.com/animals
 - User Functionality to upload, edit, and delete animals
 - Sessions to track when the User is signed in or not
 - Img src tracking to check if an image has already been uploaded or not
+
+## Future Development
+- Allow users to upload their own images and store them on a cloud based server like AWS
+- Create a Neural Network to identify what animal is being uploaded and reccommend that type while creating an animal
+- Add a comment feature onto animals to allow people to share their thoughts
