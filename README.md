@@ -23,3 +23,4 @@ Live Site: https://mighty-river-22200.herokuapp.com/animals
 - Allow users to upload their own images and store them on a cloud based server like AWS
 - Create a Neural Network to identify what animal is being uploaded and reccommend that type while creating an animal
 - Add a comment feature onto animals to allow people to share their thoughts
+- Add user profile pictures for comments
