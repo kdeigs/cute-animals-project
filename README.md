@@ -11,3 +11,10 @@ Live Site: https://mighty-river-22200.herokuapp.com/animals
 - Design - Google Fonts, Bulma
 - Project Planning - Trello
 - Visual Studio Code
+
+## Features
+- Ability to upload links to the site and display them on the home page and their own independent pages.
+- Carousel of the most recent three animals uploaded on the home page
+- User Functionality to upload, edit, and delete animals
+- Sessions to track when the User is signed in or not
+- Img src tracking to check if an image has already been uploaded or not
